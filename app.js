@@ -8,26 +8,18 @@ const session = require("express-session");
 const cors = require("cors");
 const todoRouter = require("./Router/todoRouter");
 const path = require("path");
-const cookieSession = require("cookie-session");
+
 // require("dotenv").config({ path: "./config/config.env" });
 
 connectPassport(passport);
 app.use(cors());
-app.use(
-  cookieSession({
-    keys: [process.env.cs],
 
-    // Cookie Options
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
-  })
-);
 app.use(
   session({
     secret: process.env.ss,
     resave: false,
     saveUninitialized: true,
     cookie: {
-      httpOnly: true,
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     },
   })
