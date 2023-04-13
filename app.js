@@ -18,7 +18,7 @@ app.use(
   session({
     secret: process.env.ss,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 app.use(passport.initialize());
