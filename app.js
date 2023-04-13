@@ -10,7 +10,7 @@ const todoRouter = require("./Router/todoRouter");
 const path = require("path");
 
 require("dotenv").config({ path: "./config/config.env" });
-
+app.enable("trust proxy");
 connectPassport(passport);
 app.use(cors());
 
