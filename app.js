@@ -9,7 +9,7 @@ const cors = require("cors");
 const todoRouter = require("./Router/todoRouter");
 const path = require("path");
 
-// require("dotenv").config({ path: "./config/config.env" });
+require("dotenv").config({ path: "./config/config.env" });
 
 connectPassport(passport);
 app.use(cors());
@@ -19,10 +19,6 @@ app.use(
     secret: process.env.ss,
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-    },
   })
 );
 app.use(passport.initialize());
