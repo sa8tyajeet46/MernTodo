@@ -8,8 +8,9 @@ const session = require("express-session");
 const cors = require("cors");
 const todoRouter = require("./Router/todoRouter");
 const path = require("path");
-
+var cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config/config.env" });
+app.use(cookieParser());
 app.enable("trust proxy");
 connectPassport(passport);
 app.use(cors());

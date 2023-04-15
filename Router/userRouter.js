@@ -12,12 +12,7 @@ const { isloggedin } = require("../middleware/isloggedin");
 const userRouter = express.Router();
 
 userRouter.route("/register").post(register);
-userRouter.route("/login").post(
-  passport.authenticate("local", {
-    session: true,
-  }),
-  login
-);
+userRouter.route("/login").post(passport.authenticate("local"), login);
 userRouter.route("/logout").post(isloggedin, logout);
 userRouter.route("/profile").get(isloggedin, profile);
 module.exports = userRouter;
