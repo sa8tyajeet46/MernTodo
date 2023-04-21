@@ -9,6 +9,7 @@ const cors = require("cors");
 const todoRouter = require("./Router/todoRouter");
 const path = require("path");
 var cookieParser = require("cookie-parser");
+const mongoDBstore = require("connect-mongo");
 require("dotenv").config({ path: "./config/config.env" });
 app.use(cookieParser());
 app.enable("trust proxy");
@@ -22,7 +23,11 @@ app.use(
     saveUninitialized: false,
     cookie: {
       secure: true,
+      // maxAge: 3600000,
     },
+    store: mongoDBstore.create({
+      mongoUrl: process.env.DB,
+    }),
   })
 );
 app.use(passport.initialize());
