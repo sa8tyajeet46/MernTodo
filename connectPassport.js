@@ -22,10 +22,12 @@ module.exports.connectPassport = (passport) => {
     })
   );
   passport.serializeUser((user, done) => {
-    return done(null, user.id);
+    if (user) {
+      return done(null, user.id);
+    }
+    return done(null);
   });
   passport.deserializeUser(async (id, done) => {
-    console.log(id);
     try {
       const user = await User.findById(id);
 

@@ -111,8 +111,7 @@ function Home() {
           )}
           <button onClick={(e) => handleLogout(e)}>Logout</button>
           <button onClick={(e) => setAdd(true)}>add</button>
-          {typeof todo !== "object" &&
-            todo &&
+          {todo &&
             todo.map((t, i) => {
               return (
                 <div key={i}>

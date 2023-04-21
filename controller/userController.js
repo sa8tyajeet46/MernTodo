@@ -49,7 +49,7 @@ const logout = async (req, res, next) => {
 const profile = async (req, res, next) => {
   try {
     const user = req.user;
-    return res.status(201).json({ sucess: true, user });
+    if (user) return res.status(201).json({ sucess: true, user });
   } catch (err) {
     // console.log(err);
     return res.status(500).json({ sucess: false, message: err.message });
